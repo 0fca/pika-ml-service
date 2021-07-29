@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ML.Data;
-using Microsoft.ML.Trainers.FastTree;
 using Microsoft.ML.Trainers;
 using Microsoft.ML;
 
@@ -29,10 +28,11 @@ namespace PikaMLModule
         public static IEstimator<ITransformer> BuildPipeline(MLContext mlContext)
         {
             // Data process configuration with pipeline data transformations
-            var pipeline = mlContext.Transforms.Text.FeaturizeText(@"col0", @"col0")      
-                                    .Append(mlContext.Transforms.Concatenate(@"Features", @"col0"))      
-                                    .Append(mlContext.Transforms.Conversion.MapValueToKey(@"col1", @"col1"))      
-                                    .Append(mlContext.MulticlassClassification.Trainers.OneVersusAll(binaryEstimator:mlContext.BinaryClassification.Trainers.FastTree(new FastTreeBinaryTrainer.Options(){NumberOfLeaves=6,MinimumExampleCountPerLeaf=13,NumberOfTrees=29,MaximumBinCountPerFeature=260,LearningRate=1F,FeatureFraction=0.799716569949553F,LabelColumnName=@"col1",FeatureColumnName=@"Features"}), labelColumnName: @"col1"))      
+            var pipeline = mlContext.Transforms.Text.FeaturizeText(@"col1", @"col1")      
+                                    .Append(mlContext.Transforms.Concatenate(@"Features", @"col1"))      
+                                    .Append(mlContext.Transforms.Conversion.MapValueToKey(@"col0", @"col0"))      
+                                    .Append(mlContext.Transforms.NormalizeMinMax(@"Features", @"Features"))      
+                                    .Append(mlContext.MulticlassClassification.Trainers.LbfgsMaximumEntropy(l1Regularization:6.67595880042656F,l2Regularization:0.051219389815929F,labelColumnName:@"col0",featureColumnName:@"Features"))      
                                     .Append(mlContext.Transforms.Conversion.MapKeyToValue(@"PredictedLabel", @"PredictedLabel"));
 
             return pipeline;
