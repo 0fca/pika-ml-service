@@ -12,7 +12,7 @@ namespace PikaMLModule.Services
             {
                 var model = new ModelInput()
                 {
-                    Col0 = inputDto.Text
+                    Example = inputDto.Text
                 };
                 var prediction = Predict(model);
                 return new WordSentimentPredictionDto(prediction.Prediction != 0, prediction.Score);

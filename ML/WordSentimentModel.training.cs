@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ML.Data;
+using Microsoft.ML.Trainers.LightGbm;
 using Microsoft.ML.Trainers;
 using Microsoft.ML;
 
@@ -31,8 +32,7 @@ namespace PikaMLModule
             var pipeline = mlContext.Transforms.Text.FeaturizeText(@"example", @"example")      
                                     .Append(mlContext.Transforms.Concatenate(@"Features", @"example"))      
                                     .Append(mlContext.Transforms.Conversion.MapValueToKey(@"prediction_label", @"prediction_label"))      
-                                    .Append(mlContext.Transforms.NormalizeMinMax(@"Features", @"Features"))      
-                                    .Append(mlContext.MulticlassClassification.Trainers.LbfgsMaximumEntropy(l1Regularization:0.03125F,l2Regularization:0.906222175446682F,labelColumnName:@"prediction_label",featureColumnName:@"Features"))      
+                                    .Append(mlContext.MulticlassClassification.Trainers.LightGbm(new LightGbmMulticlassTrainer.Options(){NumberOfLeaves=4,MinimumExampleCountPerLeaf=32,NumberOfIterations=23,MaximumBinCountPerFeature=238,LearningRate=0.943127790244284F,LabelColumnName=@"prediction_label",FeatureColumnName=@"Features",Booster=new GradientBooster.Options(){SubsampleFraction=0.860402637447058F,FeatureFraction=0.740009348349834F,L1Regularization=9.07878317382097E-10F,L2Regularization=54.7726629778811F}}))      
                                     .Append(mlContext.Transforms.Conversion.MapKeyToValue(@"PredictedLabel", @"PredictedLabel"));
 
             return pipeline;
