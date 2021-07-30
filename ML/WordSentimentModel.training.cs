@@ -28,11 +28,11 @@ namespace PikaMLModule
         public static IEstimator<ITransformer> BuildPipeline(MLContext mlContext)
         {
             // Data process configuration with pipeline data transformations
-            var pipeline = mlContext.Transforms.Text.FeaturizeText(@"col1", @"col1")      
-                                    .Append(mlContext.Transforms.Concatenate(@"Features", @"col1"))      
-                                    .Append(mlContext.Transforms.Conversion.MapValueToKey(@"col0", @"col0"))      
+            var pipeline = mlContext.Transforms.Text.FeaturizeText(@"example", @"example")      
+                                    .Append(mlContext.Transforms.Concatenate(@"Features", @"example"))      
+                                    .Append(mlContext.Transforms.Conversion.MapValueToKey(@"prediction_label", @"prediction_label"))      
                                     .Append(mlContext.Transforms.NormalizeMinMax(@"Features", @"Features"))      
-                                    .Append(mlContext.MulticlassClassification.Trainers.LbfgsMaximumEntropy(l1Regularization:6.67595880042656F,l2Regularization:0.051219389815929F,labelColumnName:@"col0",featureColumnName:@"Features"))      
+                                    .Append(mlContext.MulticlassClassification.Trainers.LbfgsMaximumEntropy(l1Regularization:0.03125F,l2Regularization:0.906222175446682F,labelColumnName:@"prediction_label",featureColumnName:@"Features"))      
                                     .Append(mlContext.Transforms.Conversion.MapKeyToValue(@"PredictedLabel", @"PredictedLabel"));
 
             return pipeline;

@@ -5,10 +5,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["WordSentimentModel_WebApi1/PikaMLModule.csproj", "WordSentimentModel_WebApi1/"]
-RUN dotnet restore "WordSentimentModel_WebApi1/PikaMLModule.csproj"
+COPY ["PikaMLModule.csproj", "."]
+RUN dotnet restore "PikaMLModule.csproj"
 COPY . .
-WORKDIR "/src/WordSentimentModel_WebApi1"
+WORKDIR "/src/"
 RUN dotnet build "PikaMLModule.csproj" -c Release -o /app/build
 
 FROM build AS publish

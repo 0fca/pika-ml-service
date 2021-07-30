@@ -16,11 +16,11 @@ namespace PikaMLModule
         #region model input class
         public class ModelInput
         {
-            [ColumnName(@"col0")]
-            public float Col0 { get; set; }
+            [ColumnName(@"prediction_label")]
+            public float Prediction_label { get; set; }
 
-            [ColumnName(@"col1")]
-            public string Col1 { get; set; }
+            [ColumnName(@"example")]
+            public string Example { get; set; }
 
         }
 
