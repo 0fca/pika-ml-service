@@ -22,7 +22,6 @@
     </None>
     <None Include="WordSentimentModel.zip">
       <DependentUpon>WordSentimentModel.mbconfig</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 </Project>
