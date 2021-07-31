@@ -8,7 +8,7 @@ using System;
 namespace PikaMLModule.Controllers
 {
     [ApiController]
-    [Route("/api/[action]")]
+    [Route("/api/sentiment/text/[action]")]
     [Consumes(MediaTypeNames.Application.Json)]
     [Produces(MediaTypeNames.Application.Json)]
     public class WordSentimentController : Controller

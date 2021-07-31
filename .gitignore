@@ -1,3 +1,4 @@
 bin
 obj
 ML/*.zip
+ML/WordSentiment/*.zip

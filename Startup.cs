@@ -24,7 +24,7 @@ namespace PikaMLModule
             services.AddCors(options => options.AddPolicy("Base", builder =>
             {
                 builder
-                    .WithOrigins("http://localhost:44378", "https://ml.lukas-bownik.net")
+                    .WithOrigins("http://localhost:8080", "https://ml.lukas-bownik.net", "https://note.lukas-bownik.net")
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials();
