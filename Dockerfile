@@ -5,6 +5,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
+RUN ls -lah /src
 COPY ["PikaMLModule.csproj", "."]
 RUN dotnet restore "PikaMLModule.csproj"
 COPY . .
