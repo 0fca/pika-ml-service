@@ -17,4 +17,5 @@ RUN dotnet publish "PikaMLModule.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+COPY --from=base /app/ML/HateSpeechPL/HS_PL.zip ./ML/HateSpeechPL/HS_PL.zip
 ENTRYPOINT ["dotnet", "PikaMLModule.dll"]
