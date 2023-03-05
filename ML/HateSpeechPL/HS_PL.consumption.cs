@@ -50,7 +50,7 @@ namespace MLTest
 
         #endregion
 
-        private static string MLNetModelPath = Path.GetFullPath("ML\\HateSpeechPL\\HS_PL.zip");
+        private static string MLNetModelPath = Path.GetFullPath($"ML{Path.DirectorySeparatorChar}HateSpeechPL{Path.DirectorySeparatorChar}HS_PL.zip");
 
         public static readonly Lazy<PredictionEngine<ModelInput, ModelOutput>> PredictEngine = new(() => CreatePredictEngine(), true);
 
