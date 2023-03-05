@@ -6,7 +6,7 @@ using Microsoft.Extensions.ML;
 using Microsoft.OpenApi.Models;
 using PikaMLModule.Services;
 using System;
-using static PikaMLModule.WordSentimentModel;
+using static MLTest.HateSpeechPL;
 
 namespace PikaMLModule
 {

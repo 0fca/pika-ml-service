@@ -7,5 +7,8 @@ namespace PikaMLModule.Models.Dto
     {
         [JsonProperty(propertyName:"text")]
         public string Text { get; set; }
+
+        [JsonIgnore]
+        public float Irony { get; set; }
     }
 }

@@ -6,6 +6,6 @@ namespace PikaMLModule.Services
 {
     public interface IPredictionService
     {
-        Task<WordSentimentPredictionDto> PredictSentiment(InputDto inputDto);
+        Task<HateSpeechPredictionDto> PredictSentiment(InputDto inputDto);
     }
 }

@@ -13,15 +13,4 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
   </ItemGroup>
-  <ItemGroup Label="WordSentimentModel">
-    <None Include="WordSentimentModel.consumption.cs">
-      <DependentUpon>WordSentimentModel.mbconfig</DependentUpon>
-    </None>
-    <None Include="WordSentimentModel.training.cs">
-      <DependentUpon>WordSentimentModel.mbconfig</DependentUpon>
-    </None>
-    <None Include="WordSentimentModel.zip">
-      <DependentUpon>WordSentimentModel.mbconfig</DependentUpon>
-    </None>
-  </ItemGroup>
 </Project>
